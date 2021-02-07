@@ -2,9 +2,13 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\Category;
+use app\models\Tag;
+use app\models\User;
 use Yii;
 use app\models\Article;
 use app\models\ArticleSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,6 +18,8 @@ use yii\filters\VerbFilter;
  */
 class ArticleController extends Controller
 {
+
+
     /**
      * {@inheritdoc}
      */
@@ -32,6 +38,7 @@ class ArticleController extends Controller
     /**
      * Lists all Article models.
      * @return mixed
+     * @throws \Exception
      */
     public function actionIndex()
     {
@@ -41,6 +48,8 @@ class ArticleController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'categoryList' => ArrayHelper::map(Category::find()->all(),'id','category_name'),
+            'tagList' => ArrayHelper::map(Tag::find()->all(),'id','tag_name')
         ]);
     }
 
@@ -66,12 +75,17 @@ class ArticleController extends Controller
     {
         $model = new Article();
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'categoryList' => ArrayHelper::map(Category::find()->all(),'id','category_name'),
+            'userList' => ArrayHelper::map(User::find()->all(),'id','user_last_name'),
+            'tagList' => ArrayHelper::map(Tag::find()->all(),'id','tag_name')
+
         ]);
     }
 
@@ -85,13 +99,20 @@ class ArticleController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $category_list = ArrayHelper::map(Category::find()->all(),'id','category_name');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $tags = Yii::$app->request->post('Article');
+            $model->saveTags($tags['tags']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'categoryList' => ArrayHelper::map(Category::find()->all(),'id','category_name'),
+            'userList' => ArrayHelper::map(User::find()->all(),'id','user_last_name'),
+            'tagList' => ArrayHelper::map(Tag::find()->all(),'id','tag_name')
+
         ]);
     }
 

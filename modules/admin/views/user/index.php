@@ -8,14 +8,13 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Users';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create user', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,11 +26,25 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'user_first_name',
-            'user_last_name',
+            [
+                'label' => 'First name',
+                'attribute' => 'user_first_name'
+            ],
+            [
+                'label' => 'Last name',
+                'attribute' => 'user_last_name'
+            ],
             'login',
             'password',
-            //'role',
+            [
+                'label' => 'Role',
+                'attribute' => 'role',
+                'content' => function($data)
+                {
+                    return ($data == 1) ? "админ" : "пользователь";
+                },
+                'filter' => ['0' => 'пользователь','1' => 'админ']
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Article */
 
-$this->title = $model->id;
+$this->title = $model->article_name;
 $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -31,10 +31,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'article_name',
-            'article_text:ntext',
-            'category_id',
-            'author_id',
+            'article_text',
+            'category.category_name',
+            [
+                'label' => 'Tags',
+                'value' => implode(', ',\yii\helpers\ArrayHelper::getColumn($model->getTags()->select('tag_name')->asArray()->all(), 'tag_name'))
+            ],
+            [
+                'label' => 'Author',
+                'value' => $model->author->user_last_name
+            ],
+
         ],
-    ]) ?>
+
+    ]);
+    ?>
 
 </div>

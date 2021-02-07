@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Article */
 
-$this->title = 'Update Article: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update article: #' . $model->id;
+
 ?>
 <div class="article-update">
 
@@ -16,6 +14,9 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'categoryList' => $categoryList,
+        'userList' => $userList,
+        'tagList' => $tagList
     ]) ?>
 
 </div>

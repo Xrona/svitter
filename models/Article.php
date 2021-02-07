@@ -34,7 +34,7 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['article_name', 'article_text', 'category_id', 'author_id'], 'required'],
+            [['article_name', 'article_text', 'category_id', 'author_id', 'category'], 'required'],
             [['article_text'], 'string'],
             [['category_id', 'author_id'], 'integer'],
             [['article_name'], 'string', 'max' => 255],
@@ -95,5 +95,16 @@ class Article extends \yii\db\ActiveRecord
     public function getTags()
     {
         return $this->hasMany(Tag::className(), ['id' => 'tag_id'])->viaTable('article_tag', ['article_id' => 'id']);
+    }
+
+    public function saveTags($tags)
+    {
+        if(is_array($tags)){
+            ArticleTag::deleteAll(['article_id' => $this->id]);
+            foreach ($tags as $tag_id){
+                $tag = Tag::findOne($tag_id);
+                $this->link('tags', $tag);
+            }
+        }
     }
 }

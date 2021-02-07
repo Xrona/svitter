@@ -1,13 +1,10 @@
 <div class="admin-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        <button class="btn btn-default">Hello</button>
-        You may customize this page by editing the following file:11111<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+    <h1>Hello, it is admin panel!</h1>
+    <br>
+    <h2>Menu</h2>
+    <a href="/admin/article" class="btn btn-primary">Articles</a>
+    <a href="/admin/category" class="btn btn-primary">Categories</a>
+    <a href="/admin/tag" class="btn btn-primary">Tags</a>
+    <a href="/admin/user" class="btn btn-primary">Users</a>
+    </ul>
 </div>
