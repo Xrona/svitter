@@ -23,7 +23,7 @@ class m210205_105931_create_article_table extends Migration
         $this->createIndex(
             'idx-article-category_id',
             'article',
-            'category_id'
+            'category_id',
         );
 
         $this->addForeignKey(
@@ -32,13 +32,13 @@ class m210205_105931_create_article_table extends Migration
             'category_id',
             'category',
             'id',
-            'CASCADE'
+            'CASCADE',
         );
 
         $this->createIndex(
             'idx-article-author_id',
             'article',
-            'author_id'
+            'author_id',
         );
 
         $this->addForeignKey(
@@ -47,7 +47,7 @@ class m210205_105931_create_article_table extends Migration
             'author_id',
             'user',
             'id',
-            'CASCADE'
+            'CASCADE',
         );
 
         $this->insert('{{%article}}', [

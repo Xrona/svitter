@@ -26,7 +26,7 @@ class m210205_105655_create_user_table extends Migration
             'user_last_name' => 'Ivan',
             'login' => 'ivanovi',
             'password' => 'qwerty',
-            'role' => 0
+            'role' => 0,
         ]);
 
         $this->insert('{{%user}}', [
@@ -34,7 +34,7 @@ class m210205_105655_create_user_table extends Migration
             'user_last_name' => 'Petya',
             'login' => 'petrperviy',
             'password' => '123456',
-            'role' => 0
+            'role' => 0,
         ]);
 
         $this->insert('{{%user}}', [
@@ -42,7 +42,7 @@ class m210205_105655_create_user_table extends Migration
             'user_last_name' => 'ad',
             'login' => 'admin',
             'password' => '1q4567',
-            'role' => 1
+            'role' => 1,
         ]);
     }
 

@@ -26,7 +26,7 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
         $this->createIndex(
             '{{%idx-article_tag-article_id}}',
             '{{%article_tag}}',
-            'article_id'
+            'article_id',
         );
 
         // add foreign key for table `{{%article}}`
@@ -36,14 +36,14 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
             'article_id',
             '{{%article}}',
             'id',
-            'CASCADE'
+            'CASCADE',
         );
 
         // creates index for column `tag_id`
         $this->createIndex(
             '{{%idx-article_tag-tag_id}}',
             '{{%article_tag}}',
-            'tag_id'
+            'tag_id',
         );
 
         // add foreign key for table `{{%tag}}`
@@ -53,17 +53,17 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
             'tag_id',
             '{{%tag}}',
             'id',
-            'CASCADE'
+            'CASCADE',
         );
 
         $this->insert('{{%article_tag}}', [
            'article_id' => 1,
-           'tag_id' => 1
+           'tag_id' => 1,
         ]);
 
         $this->insert('{{%article_tag}}', [
             'article_id' => 1,
-            'tag_id' => 2
+            'tag_id' => 2,
         ]);
     }
 
