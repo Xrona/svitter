@@ -77,6 +77,11 @@ class ArticleController extends Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // getting a list of tags via post
+            $tags = Yii::$app->request->post('Article');
+
+            //saving tags on db
+            $model->saveTags($tags['tags']);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
