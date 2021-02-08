@@ -1,4 +1,4 @@
 Admin panel svitter
 
-login: admin
+login: admin <br>
 password: 1q4567
