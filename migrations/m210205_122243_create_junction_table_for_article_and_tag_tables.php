@@ -26,7 +26,7 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
         $this->createIndex(
             '{{%idx-article_tag-article_id}}',
             '{{%article_tag}}',
-            'article_id',
+            'article_id'
         );
 
         // add foreign key for table `{{%article}}`
@@ -36,14 +36,14 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
             'article_id',
             '{{%article}}',
             'id',
-            'CASCADE',
+            'CASCADE'
         );
 
         // creates index for column `tag_id`
         $this->createIndex(
             '{{%idx-article_tag-tag_id}}',
             '{{%article_tag}}',
-            'tag_id',
+            'tag_id'
         );
 
         // add foreign key for table `{{%tag}}`
@@ -53,7 +53,7 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
             'tag_id',
             '{{%tag}}',
             'id',
-            'CASCADE',
+            'CASCADE'
         );
 
         $this->insert('{{%article_tag}}', [
@@ -75,25 +75,25 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
         // drops foreign key for table `{{%article}}`
         $this->dropForeignKey(
             '{{%fk-article_tag-article_id}}',
-            '{{%article_tag}}',
+            '{{%article_tag}}'
         );
 
         // drops index for column `article_id`
         $this->dropIndex(
             '{{%idx-article_tag-article_id}}',
-            '{{%article_tag}}',
+            '{{%article_tag}}'
         );
 
         // drops foreign key for table `{{%tag}}`
         $this->dropForeignKey(
             '{{%fk-article_tag-tag_id}}',
-            '{{%article_tag}}',
+            '{{%article_tag}}'
         );
 
         // drops index for column `tag_id`
         $this->dropIndex(
             '{{%idx-article_tag-tag_id}}',
-            '{{%article_tag}}',
+            '{{%article_tag}}'
         );
 
         $this->delete('{{%article_tag}}', ['id_tag' => '*']);
