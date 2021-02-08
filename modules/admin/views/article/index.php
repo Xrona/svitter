@@ -6,6 +6,8 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ArticleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $categoryList app\models\Article */
+/* @var $tagList app\models\Article */
 
 $this->title = 'Articles';
 
@@ -36,7 +38,7 @@ $this->title = 'Articles';
                 'content' =>  function($data){
                     return $data->category->category_name;
                 },
-                'filter' => $categoryList
+                'filter' => $categoryList,
 
             ],
             [
@@ -46,7 +48,7 @@ $this->title = 'Articles';
                 'content' => function($data){
                     return implode('; ',\yii\helpers\ArrayHelper::getColumn($data->getTags()->select('tag_name')->asArray()->all(),'tag_name'));
                 },
-                'filter' => $tagList
+                'filter' => $tagList,
 
             ],
 

@@ -64,29 +64,49 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $this->hasMany(Article::className(), ['author_id' => 'id']);
     }
 
+    /**
+     * @param int|string $id
+     *
+     * @return User|IdentityInterface|null
+     */
     public static function findIdentity($id)
     {
        return User::findOne($id);
     }
 
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        // TODO: Implement findIdentityByAccessToken() method.
-    }
-
+    /**
+     * @param $login
+     *
+     * @return array|\yii\db\ActiveRecord|null
+     */
     public static function findByUsername($login)
     {
         return User::find()->where(['login' => $login])->one();
     }
 
+    /**
+     * @param $password
+     *
+     * @return bool
+     */
     public function validatePassword($password)
     {
         return ($this->password == $password);
     }
 
+    /**
+     * @return int|string
+     *
+     * @return integer
+     */
     public function getId()
     {
         return $this->id;
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // TODO: Implement findIdentityByAccessToken() method.
     }
 
     public function getAuthKey()

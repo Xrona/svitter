@@ -55,6 +55,16 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
             'id',
             'CASCADE'
         );
+
+        $this->insert('{{%article_tag}}', [
+           'article_id' => 1,
+           'tag_id' => 1
+        ]);
+
+        $this->insert('{{%article_tag}}', [
+            'article_id' => 1,
+            'tag_id' => 2
+        ]);
     }
 
     /**
@@ -85,6 +95,8 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
             '{{%idx-article_tag-tag_id}}',
             '{{%article_tag}}'
         );
+
+        $this->delete('{{%article_tag}}', ['id_tag' => '*']);
 
         $this->dropTable('{{%article_tag}}');
     }

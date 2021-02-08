@@ -84,8 +84,7 @@ class ArticleController extends Controller
             'model' => $model,
             'categoryList' => ArrayHelper::map(Category::find()->all(),'id','category_name'),
             'userList' => ArrayHelper::map(User::find()->all(),'id','user_last_name'),
-            'tagList' => ArrayHelper::map(Tag::find()->all(),'id','tag_name')
-
+            'tagList' => ArrayHelper::map(Tag::find()->all(),'id','tag_name'),
         ]);
     }
 
@@ -102,7 +101,10 @@ class ArticleController extends Controller
         $category_list = ArrayHelper::map(Category::find()->all(),'id','category_name');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // getting a list of tags via post
             $tags = Yii::$app->request->post('Article');
+
+            //saving tags on db
             $model->saveTags($tags['tags']);
             return $this->redirect(['view', 'id' => $model->id]);
         }

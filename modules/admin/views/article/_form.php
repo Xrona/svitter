@@ -29,7 +29,7 @@ use conquer\select2\Select2Widget;
         Select2Widget::className(),
         [
             'items' => $tagList,
-            'multiple' => 'multiple'
+            'multiple' => 'multiple',
         ])
     ?>
 

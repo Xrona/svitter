@@ -49,6 +49,19 @@ class m210205_105931_create_article_table extends Migration
             'id',
             'CASCADE'
         );
+
+        $this->insert('{{%article}}', [
+            'article_name' => 'About Dubrofskiy',
+            'article_text' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            'category_id' => 1,
+            'author_id' => 1,
+        ]);
+        $this->insert('{{%article}}', [
+            'article_name' => 'With Joke',
+            'article_text' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
+            'category_id' => 2,
+            'author_id' => 2,
+        ]);
     }
 
     /**
@@ -75,6 +88,8 @@ class m210205_105931_create_article_table extends Migration
             'idx-article-author_id',
             'article'
         );
+
+        $this->delete('{{%article}}', ['id' => '*']);
 
         $this->dropTable('{{%article}}');
     }

@@ -16,6 +16,14 @@ class m210205_105902_create_tag_table extends Migration
             'id' => $this->primaryKey(),
             'tag_name' => $this->string()->notNull()
         ]);
+
+        $this->insert('{{%tag}}', [
+           'tag_name' => 'popular'
+        ]);
+
+        $this->insert('{{%tag}}', [
+           'tag_name' => 'interesting'
+        ]);
     }
 
     /**
@@ -23,6 +31,8 @@ class m210205_105902_create_tag_table extends Migration
      */
     public function safeDown()
     {
+        $this->delete('{{%tag}}', ['id' => '*']);
+
         $this->dropTable('{{%tag}}');
     }
 }

@@ -41,7 +41,7 @@ $this->title = 'Users';
                 'attribute' => 'role',
                 'content' => function($data)
                 {
-                    return ($data == 1) ? "админ" : "пользователь";
+                    return ($data->role == 1) ? "админ" : "пользователь";
                 },
                 'filter' => ['0' => 'пользователь','1' => 'админ']
             ],

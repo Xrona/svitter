@@ -14,7 +14,15 @@ class m210205_105849_create_category_table extends Migration
     {
         $this->createTable('{{%category}}', [
             'id' => $this->primaryKey(),
-            'category_name' => $this->string()->notNull()
+            'category_name' => $this->string()->notNull(),
+        ]);
+
+        $this->insert('{{%category}}', [
+            'category_name' => 'Books',
+        ]);
+
+        $this->insert('{{%category}}', [
+            'category_name' => 'journals',
         ]);
     }
 
@@ -23,6 +31,8 @@ class m210205_105849_create_category_table extends Migration
      */
     public function safeDown()
     {
+        $this->delete('{{%category}}', ['id' => '*']);
+
         $this->dropTable('{{%category}}');
     }
 }

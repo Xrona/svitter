@@ -2,13 +2,16 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use \yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Article */
+/* @var $tagNameList app\models\Article */
 
 $this->title = $model->article_name;
-$this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
+$tagNameList = ArrayHelper::getColumn($model->getTags()->select('tag_name')->asArray()->all(), 'tag_name');
+
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="article-view">
@@ -35,11 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'category.category_name',
             [
                 'label' => 'Tags',
-                'value' => implode(', ',\yii\helpers\ArrayHelper::getColumn($model->getTags()->select('tag_name')->asArray()->all(), 'tag_name'))
+                'value' => implode(', ', $tagNameList),
             ],
             [
                 'label' => 'Author',
-                'value' => $model->author->user_last_name
+                'value' => $model->author->user_last_name,
             ],
 
         ],

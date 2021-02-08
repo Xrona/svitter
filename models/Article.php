@@ -97,6 +97,12 @@ class Article extends \yii\db\ActiveRecord
         return $this->hasMany(Tag::className(), ['id' => 'tag_id'])->viaTable('article_tag', ['article_id' => 'id']);
     }
 
+    /**
+     * @param $tags
+     *
+     * delete all records on ArticleTags by article_id
+     * save selected tags on ArticleTags by article_id
+     */
     public function saveTags($tags)
     {
         if(is_array($tags)){
