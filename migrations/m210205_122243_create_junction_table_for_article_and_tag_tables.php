@@ -81,19 +81,19 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
         // drops index for column `article_id`
         $this->dropIndex(
             '{{%idx-article_tag-article_id}}',
-            '{{%article_tag}}'
+            '{{%article_tag}}',
         );
 
         // drops foreign key for table `{{%tag}}`
         $this->dropForeignKey(
             '{{%fk-article_tag-tag_id}}',
-            '{{%article_tag}}'
+            '{{%article_tag}}',
         );
 
         // drops index for column `tag_id`
         $this->dropIndex(
             '{{%idx-article_tag-tag_id}}',
-            '{{%article_tag}}'
+            '{{%article_tag}}',
         );
 
         $this->delete('{{%article_tag}}', ['id_tag' => '*']);

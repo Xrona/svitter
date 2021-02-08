@@ -71,22 +71,22 @@ class m210205_105931_create_article_table extends Migration
     {
         $this->dropForeignKey(
             'fk-article-category_id',
-            'article'
+            'article',
         );
 
         $this->dropIndex(
             'idx_article-category_id',
-            'article'
+            'article',
         );
 
         $this->dropForeignKey(
             'fk-article-author_id',
-            'article'
+            'article',
         );
 
         $this->dropIndex(
             'idx-article-author_id',
-            'article'
+            'article',
         );
 
         $this->delete('{{%article}}', ['id' => '*']);

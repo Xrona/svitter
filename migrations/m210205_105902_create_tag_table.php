@@ -18,11 +18,11 @@ class m210205_105902_create_tag_table extends Migration
         ]);
 
         $this->insert('{{%tag}}', [
-           'tag_name' => 'popular'
+           'tag_name' => 'popular',
         ]);
 
         $this->insert('{{%tag}}', [
-           'tag_name' => 'interesting'
+           'tag_name' => 'interesting',
         ]);
     }
 

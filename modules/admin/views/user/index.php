@@ -28,11 +28,11 @@ $this->title = 'Users';
             'id',
             [
                 'label' => 'First name',
-                'attribute' => 'user_first_name'
+                'attribute' => 'user_first_name',
             ],
             [
                 'label' => 'Last name',
-                'attribute' => 'user_last_name'
+                'attribute' => 'user_last_name',
             ],
             'login',
             'password',
@@ -43,7 +43,7 @@ $this->title = 'Users';
                 {
                     return ($data->role == 1) ? "админ" : "пользователь";
                 },
-                'filter' => ['0' => 'пользователь','1' => 'админ']
+                'filter' => ['0' => 'пользователь','1' => 'админ'],
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
