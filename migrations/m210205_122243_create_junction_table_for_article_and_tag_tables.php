@@ -75,7 +75,7 @@ class m210205_122243_create_junction_table_for_article_and_tag_tables extends Mi
         // drops foreign key for table `{{%article}}`
         $this->dropForeignKey(
             '{{%fk-article_tag-article_id}}',
-            '{{%article_tag}}'
+            '{{%article_tag}}',
         );
 
         // drops index for column `article_id`
